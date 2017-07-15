@@ -38,6 +38,7 @@ git clone https://github.com/Emblem21-OpenSource/blog.git blog
 cd blog
 yarn install
 rm -fr .git source/.gitignore
+mv sample._config.yml _config.yml 
 
 # Start the server
 npm start

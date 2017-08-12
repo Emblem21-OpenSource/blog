@@ -7,7 +7,7 @@
 		var title = page.title;
 	%>
 
-	<title><% if (title){ %><%= title %> <% } %><%= config.title %></title>
+	<title><%= config.title %><% if (title){ %> - <%= title %><% } %></title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 	<% if (config.lunr) { %>
 		<script src="<%= url_for('js/compatibility/augment.js') %>" type="text/javascript"></script>

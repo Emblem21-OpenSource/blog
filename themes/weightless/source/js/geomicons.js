@@ -145,13 +145,17 @@ var geomicons =
 
 	  if (typeof document !== 'undefined') {
 	    for (var i = 0; i < elements.length; i++) {
-	      var key = elements[i].getAttribute('data-icon');
-	      key = camelCase(key);
-	      if (!paths[key]) {
-	        error(key);
-	        return false;
-	      }
-	      inject(elements[i], key);
+	      if(elements[i].getAttribute) {
+		      var key = elements[i].getAttribute('data-icon');
+		      key = camelCase(key);
+		      if (!paths[key]) {
+		        error(key);
+		        return false;
+		      }
+		      inject(elements[i], key);
+		   } else {
+		   	 return false;
+		   }
 	    }
 	  } else {
 	    console.error('geomicons.inject() only works in a browser context');

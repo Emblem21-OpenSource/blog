@@ -1,9 +1,12 @@
 <%
 var posts = [];
+
 site.posts.forEach(function(item, index) {
 	var year = date(item.date, 'YYYY');
+
 	if (!posts[year]) {
 		posts[year] = [];
+		posts[year].year = year;
 	}
 	posts[year].push({
 		'title': item.title,
@@ -11,6 +14,9 @@ site.posts.forEach(function(item, index) {
 		'date': item.date
 	})
 });
+
+posts.reverse();
+
 %>
 <div class="mt2 mb2">
 	<span class="btn button-narrow">Archives</span>
@@ -20,10 +26,11 @@ site.posts.forEach(function(item, index) {
 <div class="mt2 mb2">
 	<% posts.forEach(function(single, year) { %>
 		<div class="col-12 bg-white rounded mb4">
-			<span class="btn block border-bottom muted"><%- year %> <span class="h6 muted">(<%- posts[year].length %>)</span></span>
+			<span class="btn block border-bottom muted"><%- single.year %> <span class="h6 muted">(<%- posts[year].length %>)</span></span>
 			<% var length = single.length;
 			single.forEach(function(item, index) { %>
-			<a href="<%- url_for(item.path) %>" class="btn block<%- (index != length - 1 ? ' border-bottom' : '') %>"><%- item.title %>
+			<a href="<%- url_for(item.path) %>" class="btn block<%- (index != length - 1 ? ' border-bottom' : '') %>">
+				<%- item.title %>
 				<span class="h6 muted black">
 					<%- date(item.date, "MMM D YYYY")%>
 				</span>

@@ -64,8 +64,8 @@ npm run deploy
 
 ## Advanced Commands
 
-* `hexo new "title"` - Make a new article
-* `hexo generate` - Generates static files
-* `hexo publish filename` - Publish a draft
-* `hexo server` - Local server start
-* `hexo deploy` - Push static files to production
+* `./node_module/.bin/hexo new "title"` - Make a new article
+* `./node_module/.bin/hexo generate` - Generates static files
+* `./node_module/.bin/hexo publish filename` - Publish a draft
+* `./node_module/.bin/hexo server` - Local server start
+* `./node_module/.bin/hexo deploy` - Push static files to production

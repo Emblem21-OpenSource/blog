@@ -1,5 +1,7 @@
 <div class="mn1 center">
 	<% for (var i in theme.menu){ %>
-		<a href="<%- url_for(theme.menu[i]) %>" class="btn button-narrow"><%= i %></a>
+		<form style="display: inline;" action="<%- url_for(theme.menu[i]) %>" method="GET">
+      <button><a class="btn button-narrow"><%= i %></a></button>
+    </form>
 	<% } %>
 </div>

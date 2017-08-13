@@ -27,6 +27,9 @@
 			<div class="p2 border-top">
 				<%- page.content %>
 			</div>
+				<% if (page.title === 'Doxx') { %>
+				  <%- partial('_partial/_shop') %>
+				<% } %>
 			<% } %>
 		</div>
 	</div>

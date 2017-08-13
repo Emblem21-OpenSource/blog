@@ -27,7 +27,7 @@
 			<div class="p2 border-top">
 				<%- page.content %>
 			</div>
-				<% if (page.title === 'Doxx') { %>
+				<% if (config.shop.active === true && page.title === 'Doxx') { %>
 				  <%- partial('_partial/_shop') %>
 				<% } %>
 			<% } %>

@@ -1,30 +1,42 @@
 <div class="m0">
   <% config.shop.items.forEach(function (item, index) { %>
-    <div class="md-col md-col-4">
-      <div class="overflow-hidden bg-white rounded">
-        <a href="<%- item.url %>"><img /></a>
-        <div class="m1 black"><a href="<%- item.url %>"><%- item.name %></a></div>
-        <div class="m1 black"><%- item.description %></div>
-        <div class="m1 black">Checksum of decoded content: <%- item.chksum %></div>
-        <div class="m1 black">
-          <div>
-            <div id="remaining_days_<%- index %>"></div>
-            <div>Days</div>
+    <div class="m0 md-col md-col-6">
+      <div class="overflow-hidden bg-white">
+        <div class="m2 border border-silver rounded">
+          <div class="inventoryData">
+            <a href="<%- item.url %>"><img /></a>
+            <div class="center black h1"><%- item.name %></a></div>
+            <div class="center mb1">
+              <form action="<%- item.url %>" method="GET">
+                <button class="center btn bg-green-gradient">$<%- item.prices[0].amount.toFixed(2) %></button>
+              </form>
+            </div>
+            <div class="px3 black"><%- item.description %></div>
           </div>
-          <div>
-            <div id="remaining_hours_<%- index %>"></div>
-            <div>Hours</div>
+          <div class="h3 bold center">Time left:</div>
+          <div class="md-col-12 clearfix center">
+            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+              <div id="remaining_days_<%- index %>" class="h1 ticker courier">--</div>
+              <div>Days</div>
+            </div>
+            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+              <div id="remaining_hours_<%- index %>" class="h1 ticker courier">--</div>
+              <div>Hours</div>
+            </div>
+            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+              <div id="remaining_minutes_<%- index %>" class="h1 ticker courier">--</div>
+              <div>Minutes</div>
+            </div>
+            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+              <div id="remaining_seconds_<%- index %>" class="h1 ticker courier">--</div>
+              <div>Seconds</div>
+            </div>
           </div>
-          <div>
-            <div id="remaining_minutes_<%- index %>"></div>
-            <div>Minutes</div>
-          </div>
-          <div>
-            <div id="remaining_seconds_<%- index %>"></div>
-            <div>Seconds</div>
+          <div class="center mb3">
+            <div class="center h3">Checksum</div>
+            <div class="center ml4 mr4 bg-silver black courier"><%- item.chksum %></div>
           </div>
         </div>
-        <div class="m1 black">$<%- item.prices[0].amount.toFixed(2) %></div>
       </div>
     </div>
   <% }) %>

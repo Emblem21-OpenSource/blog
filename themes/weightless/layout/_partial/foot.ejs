@@ -12,7 +12,7 @@
 	<% }) %>
 	];
 
-  	setInterval(function () {
+	function updateTime() {
     	var now = moment(Date.now());
 
     	if(now.isDST()) {
@@ -27,7 +27,11 @@
 			document.querySelector("#remaining_minutes_" + index).textContent = expires.diff(now, 'minutes') % 60;
 			document.querySelector("#remaining_seconds_" + index).textContent = expires.diff(now, 'seconds') % 60;
     	});
-  	}, 1000);
+	}
+
+	// Updates all timers on the Main page
+  	setInterval(updateTime, 1000);
+  	updateTime();
 	<% } %>
 </script>
 

@@ -2,13 +2,13 @@
   <% config.shop.items.forEach(function (item, index) { %>
     <div class="m0 md-col md-col-6">
       <div class="overflow-hidden bg-white">
-        <div class="m2 border border-silver rounded">
+        <div class="ml2 mr2 mb2 border border-silver rounded">
           <div class="inventoryData">
             <a href="<%- item.url %>"><img /></a>
             <div class="center black h1"><%- item.name %></a></div>
             <div class="center mb1">
               <form action="<%- item.url %>" method="GET">
-                <button class="center btn bg-green-gradient">$<%- item.prices[0].amount.toFixed(2) %></button>
+                <button id="buy_<%- index %>" class="center btn bg-green-gradient" disabled>$<%- item.prices[item.priceIndex].amount.toFixed(2) %></button>
               </form>
             </div>
             <div class="px3 black"><%- item.description %></div>

@@ -88,6 +88,24 @@ img {
   text-decoration: none;
 }
 
+.bg-gray-gradient {
+  background: #f0f0f0;
+  background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #f0f0f0, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #f0f0f0, #e6e6e6);
+  background-image: -o-linear-gradient(top, #f0f0f0, #e6e6e6);
+  background-image: linear-gradient(to bottom, #f0f0f0, #e6e6e6);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #f0f0f0 1px;
+  text-decoration: none;
+}
+
 form {
 	display: inline;
 }

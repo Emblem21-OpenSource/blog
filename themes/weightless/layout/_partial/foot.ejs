@@ -12,6 +12,12 @@
 	<% }) %>
 	];
 
+	var buyButtons = [
+	<% config.shop.items.forEach(function (item, index) { %>
+		document.querySelector('#buy_<%- index %>'),
+	<% }) %>
+	];
+
 	function updateTime() {
     	var now = moment(Date.now());
 
@@ -22,6 +28,23 @@
     	now = now.utc();
 
     	expirationTimers.forEach(function (expires, index) {
+    		var buyButton = buyButtons[index];
+
+  	    	if(expires < now) {
+  	    		// The sale has expired
+  	    		if(!buyButton.textContent !== 'Expired') {
+  	    			// The button can be disabled
+  	    			buyButton.disabled = 'disabled';
+  	    			buyButton.className += ' bg-gray-gradient';
+  	    			buyButton.textContent = 'Expired';
+  	    		}
+
+  	    		return;
+  	    	} else {
+  	    		// The button is active
+  	    		buyButton.disabled = undefined;
+  	    	}
+
     		document.querySelector("#remaining_days_" + index).textContent = expires.diff(now, 'days');
     		document.querySelector("#remaining_hours_" + index).textContent = expires.diff(now, 'hours') % 24;
 			document.querySelector("#remaining_minutes_" + index).textContent = expires.diff(now, 'minutes') % 60;

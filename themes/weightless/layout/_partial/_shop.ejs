@@ -1,30 +1,29 @@
 <div class="m0">
-  <% 
-    config.shop.items.forEach(function (item) {
-    /*
-    - name
-      description
-      url
-      chksum
-      image
-      createdDate
-      expiredDate
-      decodeDate
-      prices:
-        - amount
-          date
-    */
-   var remainingTime = item.expiredDate;
-   var decoderOpens = item.decodeDate;
-  %>
+  <% config.shop.items.forEach(function (item, index) { %>
     <div class="md-col md-col-4">
       <div class="overflow-hidden bg-white rounded">
         <a href="<%- item.url %>"><img /></a>
         <div class="m1 black"><a href="<%- item.url %>"><%- item.name %></a></div>
         <div class="m1 black"><%- item.description %></div>
         <div class="m1 black">Checksum of decoded content: <%- item.chksum %></div>
-        <div class="m1 black">Time Remaining: <%- remainingTime %></div>
-        <div class="m1 black">Decoder Opens:<%- decoderOpens %></div>
+        <div class="m1 black">
+          <div>
+            <div id="remaining_days_<%- index %>"></div>
+            <div>Days</div>
+          </div>
+          <div>
+            <div id="remaining_hours_<%- index %>"></div>
+            <div>Hours</div>
+          </div>
+          <div>
+            <div id="remaining_minutes_<%- index %>"></div>
+            <div>Minutes</div>
+          </div>
+          <div>
+            <div id="remaining_seconds_<%- index %>"></div>
+            <div>Seconds</div>
+          </div>
+        </div>
         <div class="m1 black">$<%- item.prices[0].amount.toFixed(2) %></div>
       </div>
     </div>

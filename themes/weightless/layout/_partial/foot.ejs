@@ -1,9 +1,29 @@
 <div class="container mb2 clearfix"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="<%= url_for('js/geomicons.js') %>"></script>
 <script type="text/javascript">
 	var icons = document.querySelectorAll('[data-icon]');
 	geomicons.inject(icons);
+
+	<% if (config.shop.active === true && page.id === 1) { %>
+	var expirationTimers = [
+	<% config.shop.items.forEach(function (item) { %>
+		moment("<%- item.expiredDate %>").utc(),
+	<% }) %>
+	];
+
+  	setInterval(function () {
+    	var now = moment(Date.now());
+    	expirationTimers.forEach(function (expires, index) {
+    		document.querySelector("#remaining_days_" + index).textContent = expires.diff(now, 'days');
+    		document.querySelector("#remaining_hours_" + index).textContent = expires.diff(now, 'hours') % 24;
+			document.querySelector("#remaining_minutes_" + index).textContent = expires.diff(now, 'minutes') % 60;
+			document.querySelector("#remaining_seconds_" + index).textContent = expires.diff(now, 'seconds') % 60;
+    	});
+  	}, 1000);
+	<% } %>
 </script>
+
 <% if (config.lunr) { %>
 	<link rel="stylesheet" href="<%= url_for('css/jquery.modal.css') %>" type="text/css">
 	<script type="text/javascript">

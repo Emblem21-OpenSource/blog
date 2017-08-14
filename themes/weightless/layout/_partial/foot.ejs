@@ -14,6 +14,13 @@
 
   	setInterval(function () {
     	var now = moment(Date.now());
+
+    	if(now.isDST()) {
+    		now.add(1, 'hour');
+    	}
+
+    	now = now.utc();
+
     	expirationTimers.forEach(function (expires, index) {
     		document.querySelector("#remaining_days_" + index).textContent = expires.diff(now, 'days');
     		document.querySelector("#remaining_hours_" + index).textContent = expires.diff(now, 'hours') % 24;

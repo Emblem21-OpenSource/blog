@@ -13,6 +13,10 @@ site.posts.forEach(function(item, index) {
 		'path': item.path,
 		'date': item.date
 	})
+
+	posts[year] = posts[year].sort(function(a, b) {
+		return a.date - b.date;
+	});
 });
 
 posts.reverse();

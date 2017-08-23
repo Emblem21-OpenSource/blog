@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 
@@ -8,26 +8,35 @@
 	%>
 
 	<title><%= config.title %><% if (title){ %> - <%= title %><% } %></title>
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+	<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /><![endif]-->
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="description" content="You are more than your identity">
 	<% if (config.lunr) { %>
-		<script src="<%= url_for('js/compatibility/augment.js') %>" type="text/javascript"></script>
+	<script src="<%= url_for('js/compatibility/augment.js') %>" type="text/javascript"></script>
 	<% } %>
 	<% if (config.feed) { %>
 		<% if (config.feed.type == 'atom') { %>
-			<link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/atom+xml" />
+	<link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/atom+xml" />
 		<% }else if (config.feed.type == 'rss2') { %>
-			<link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/rss+xml" />
+	<link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/rss+xml" />
 		<% } %>
 	<% } %>
 	<link rel="stylesheet" href="<%= url_for('css/normalize.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/basscss.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/basscss-ui-groups.css') %>" type="text/css">
-	<link rel="stylesheet" href="<%= url_for('css/tomorrow.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/style.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/lato-v11-all.css') %>" type="text/css">
 	<% if (config.google_site_verification) { %>
-		<meta name="google-site-verification" content="<%= config.google_site_verification %>" />
+	<meta name="google-site-verification" content="<%= config.google_site_verification %>" />
 	<% } %>
+
+	<meta property="og:title" content="CultState.com">
+	<meta property="og:site_name" content="CultState">
+	<meta property="og:url" content="https://www.cultstate.com">
+	<meta property="og:description" content="You are more than your identity">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="https://i.imgur.com/whnBhvh.jpg">
 
 	<!--[if lt IE 9]><script src="<%- config.root %>js/html5.js" type="text/javascript"></script><![endif]-->
 	<script src="<%= url_for('js/main.js') %>" type="text/javascript"></script>

@@ -36,12 +36,45 @@ sudo apt-get update && sudo apt-get install yarn
 # Setup Blog
 git clone https://github.com/Emblem21-OpenSource/blog.git blog
 cd blog
+npm install -g hexo-cli
 yarn install
 rm -fr .git source/.gitignore
 mv sample._config.yml _config.yml 
 
+# Install Nginx
+
 # Start the server
 npm start
+```
+
+Nginx Config
+
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+
+        root /var/www/blog;
+        index index.html index.htm;
+
+        # Make site accessible from http://localhost/
+        server_name localhost;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+        location /c20a1a26-08fe-4655-b5af-f041e603878e {
+                proxy_pass http://localhost:8081;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+}
 ```
 
 Once the server is running, go to [http://localhost:4000/admin/#/auth-setup](http://localhost:4000/admin/#/auth-setup) to setup your admin authorization and follow the instructions.

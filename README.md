@@ -36,7 +36,6 @@ sudo apt-get update && sudo apt-get install yarn
 # Setup Blog
 git clone https://github.com/Emblem21-OpenSource/blog.git blog
 cd blog
-npm install -g hexo-cli
 yarn install
 rm -fr .git source/.gitignore
 mv sample._config.yml _config.yml 

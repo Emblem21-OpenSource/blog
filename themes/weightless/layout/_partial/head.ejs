@@ -22,11 +22,8 @@
 	<link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/rss+xml" />
 		<% } %>
 	<% } %>
-	<link rel="stylesheet" href="<%= url_for('css/normalize.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/basscss.css') %>" type="text/css">
-	<link rel="stylesheet" href="<%= url_for('css/basscss-ui-groups.css') %>" type="text/css">
 	<link rel="stylesheet" href="<%= url_for('css/style.css') %>" type="text/css">
-	<link rel="stylesheet" href="<%= url_for('css/lato-v11-all.css') %>" type="text/css">
 	<% if (config.google_site_verification) { %>
 	<meta name="google-site-verification" content="<%= config.google_site_verification %>" />
 	<% } %>

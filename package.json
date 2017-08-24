@@ -7,11 +7,13 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/hexo server -d",
-    "deploy": "./node_modules/.bin/hexo deploy"
+    "deploy": "./node_modules/.bin/hexo deploy",
+    "clean": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate && echo '*' > public/.gitignore && echo '!.gitignore' >> public/.gitignore"
   },
   "dependencies": {
     "hexo": "^3.2.0",
     "hexo-admin": "^2.2.1",
+    "hexo-all-minifier": "^0.2.4",
     "hexo-deployer-rsync": "^0.1.2",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",

@@ -1,9 +1,9 @@
 <div class="container mb2 clearfix"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="<%= url_for('js/geomicons.js') %>"></script>
+<!-- <script src="<%= url_for('js/geomicons.js') %>"></script> -->
 <script type="text/javascript">
 	var icons = document.querySelectorAll('[data-icon]');
-	geomicons.inject(icons);
+	// geomicons.inject(icons);
 
 	<% if (config.shop.active === true && page.id === 1) { %>
 	var expirationTimers = [

@@ -8,7 +8,7 @@
   "scripts": {
     "start": "./node_modules/.bin/hexo server -d",
     "deploy": "./node_modules/.bin/hexo deploy",
-    "clean": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate && echo '*' > public/.gitignore && echo '!.gitignore' >> public/.gitignore"
+    "clean": "./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate && echo '*' > public/.gitignore && echo '!.gitignore' >> public/.gitignore && cp source/robots.txt public/robots.txt"
   },
   "dependencies": {
     "hexo": "^3.2.0",

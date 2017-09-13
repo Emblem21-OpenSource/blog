@@ -1,39 +1,47 @@
 <div class="m0">
-  <% config.shop.items.forEach(function (item, index) { %>
-    <div class="m0 md-col md-col-6">
-      <div class="overflow-hidden bg-white">
-        <div class="ml2 mr2 mb2 border border-silver rounded">
-          <div class="inventoryData">
-            <a href="<%- item.url %>"><img /></a>
-            <div class="center black h1"><%- item.name %></a></div>
-            <div class="center mb1">
-              <form action="<%- item.url %>" method="GET">
-                <button id="buy_<%- index %>" class="center btn bg-green-gradient" disabled>$<%- item.prices[item.priceIndex].amount.toFixed(2) %></button>
-              </form>
+  <% 
+    var counter = -1;
+    config.shop.items.forEach(function (item, index) { 
+  %>
+    <% 
+      if (item.display) {
+        counter += 1;
+    %>
+      <div class="m0 md-col md-col-6">
+        <div class="overflow-hidden bg-white">
+          <div class="ml2 mr2 mb2 border border-silver rounded">
+            <div class="inventoryData">
+              <a href="<%- item.url %>"><img src="images/<%- item.image %>" class="itemImage" width="160" height="160" /></a>
+              <div class="center black h1"><%- item.name %></a></div>
+              <div class="center mb1">
+                <form action="<%- item.url %>" method="GET">
+                  <button id="buy_<%- counter %>" class="center btn bg-green-gradient buyButton" autocomplete="off" disabled>$<%- item.prices[item.priceIndex].amount.toFixed(2) %></button>
+                </form>
+              </div>
+              <div class="px3 black"><%- item.description %></div>
             </div>
-            <div class="px3 black"><%- item.description %></div>
-          </div>
-          <div class="h3 bold center">Time left:</div>
-          <div class="md-col-12 clearfix center">
-            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
-              <div id="remaining_days_<%- index %>" class="h1 ticker courier">--</div>
-              <div>Days</div>
-            </div>
-            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
-              <div id="remaining_hours_<%- index %>" class="h1 ticker courier">--</div>
-              <div>Hours</div>
-            </div>
-            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
-              <div id="remaining_minutes_<%- index %>" class="h1 ticker courier">--</div>
-              <div>Minutes</div>
-            </div>
-            <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
-              <div id="remaining_seconds_<%- index %>" class="h1 ticker courier">--</div>
-              <div>Seconds</div>
+            <div class="h3 bold center">Time left:</div>
+            <div class="md-col-12 clearfix center">
+              <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+                <div id="remaining_days_<%- counter %>" class="h1 ticker courier">--</div>
+                <div>Days</div>
+              </div>
+              <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+                <div id="remaining_hours_<%- counter %>" class="h1 ticker courier">--</div>
+                <div>Hours</div>
+              </div>
+              <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+                <div id="remaining_minutes_<%- counter %>" class="h1 ticker courier">--</div>
+                <div>Minutes</div>
+              </div>
+              <div class="inline-block ml1 mr1 mt1 px1 timerSlot">
+                <div id="remaining_seconds_<%- counter %>" class="h1 ticker courier">--</div>
+                <div>Seconds</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% } %>
   <% }) %>
 </div>

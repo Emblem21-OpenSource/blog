@@ -148,3 +148,7 @@ figure.highlight.plain {
   background-color: #111;
   color: #fff;
 }
+
+.itemImage {
+  margin-top: 20px;
+}

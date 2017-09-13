@@ -6,17 +6,40 @@
 	// geomicons.inject(icons);
 
 	<% if (config.shop.active === true && page.id === 1) { %>
-	var expirationTimers = [
-	<% config.shop.items.forEach(function (item) { %>
-		moment("<%- item.expiredDate %>").utc(),
-	<% }) %>
-	];
+	var expirationTimers = [];
+	<% 
+	config.shop.items.forEach(function (item) { 
+		if(item.display) {
+	%>
+		expirationTimers.push(moment("<%- item.expiredDate %>").utc());
+	<%
+		}
+	})
+	%>
 
-	var buyButtons = [
-	<% config.shop.items.forEach(function (item, index) { %>
-		document.querySelector('#buy_<%- index %>'),
-	<% }) %>
-	];
+	var startTimers = [];
+	<%
+	config.shop.items.forEach(function (item) { 
+		if(item.display) {
+	%>
+	startTimers.push(moment("<%- item.startDate %>").utc());
+	<%
+		}
+	})
+	%>
+
+	var buyButtons = [];
+	<%
+	var counter = 0;
+	config.shop.items.forEach(function (item, index) {
+		if(item.display) {
+	%>
+	buyButtons.push(document.querySelector('#buy_<%- counter %>'));
+	<%
+		counter += 1;
+		}
+	})
+	%>
 
 	function updateTime() {
     	var now = moment(Date.now());
@@ -30,13 +53,23 @@
     	expirationTimers.forEach(function (expires, index) {
     		var buyButton = buyButtons[index];
 
-  	    	if(expires < now) {
+  	    	if(now > expires) {
   	    		// The sale has expired
-  	    		if(!buyButton.textContent !== 'Expired') {
+  	    		if(buyButton.textContent !== 'Expired') {
   	    			// The button can be disabled
   	    			buyButton.disabled = 'disabled';
   	    			buyButton.className += ' bg-gray-gradient';
   	    			buyButton.textContent = 'Expired';
+  	    		}
+
+  	    		return;
+  	    	} else if (now < startTimers[index]) {
+				// The sale is not ready
+  	    		if(buyButton.textContent !== 'Not Ready') {
+  	    			// The button can be disabled
+  	    			buyButton.disabled = 'disabled';
+  	    			buyButton.className += ' bg-gray-gradient';
+  	    			buyButton.textContent = 'Not Ready';
   	    		}
 
   	    		return;

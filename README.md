@@ -96,8 +96,15 @@ npm run deploy
 
 ## Advanced Commands
 
-* `./node_module/.bin/hexo new "title"` - Make a new article
-* `./node_module/.bin/hexo generate` - Generates static files
-* `./node_module/.bin/hexo publish filename` - Publish a draft
-* `./node_module/.bin/hexo server` - Local server start
-* `./node_module/.bin/hexo deploy` - Push static files to production
+* `./node_modules/.bin/hexo new "title"` - Make a new article
+* `./node_modules/.bin/hexo generate` - Generates static files
+* `./node_modules/.bin/hexo publish filename` - Publish a draft
+* `./node_modules/.bin/hexo server` - Local server start
+* `./node_modules/.bin/hexo deploy` - Push static files to production
+
+
+HOW TO RESTORE DOXX
+
+`npm remove hexo-generator-index --save`
+
+./node_modules/.bin/hexo new "The Ravens Will Starve"

@@ -91,7 +91,7 @@ Once the server is running, go to [http://localhost:4000](http://localhost:4000)
 To publish your new work to your production environment, type the following:
 
 ```
-npm run deploy
+npm run clean && npm run deploy
 ```
 
 ## Advanced Commands
